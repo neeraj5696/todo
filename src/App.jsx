@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './App.css'
 
 function App() {
 
@@ -39,30 +40,30 @@ function App() {
     setEditingText("")
    }
   return (
-   <div>
-     <div className='border-2 w-88 rounded-md border-neutral-800 w-[24rem] m-2 p-4' >
+   <div className='hello' >
+     <div className='outerbox' >
       
-      <div className='text-2xl bg-slate-600 rounded-md  text-white  m-2 p-1/2   text-center' > This is TODO App !!</div>
-      <div className='border-2 rounded-md m-2 ' >
-     <div className='flex'>
-     <label className='m-2 px-4 border-2 rounded-md' htmlFor="">Name: </label>
-      <input className='border-2 m-2 px-4 rounded-md border-blue-600' type="text" onChange={(e)=>setValue(e.target.value)} placeholder='What is in your mind!!' />
+      <div className=' m-2 p-1 text-center border-2 bg-green-600 border-slate-500 rounded-md  text-white' > This is TODO App !!</div>
+      <div className=' ' >
+     <div className='border-2 border-blue-400 rounded-md m-2 p-1 bg-white'>
+       <label className='' htmlFor="">Name: </label>
+       <input className='' type="text" onChange={(e)=>setValue(e.target.value)} placeholder='What is in your mind!!' />
      </div>
       
       </div>
-      <div className='border-2 m-2 px-2  border-slate-500 rounded-md text-center hover:border-blue-500 bg-slate-500 hover:bg-blue-600' ><button type='submit' onClick={CreateItem}   > CreateItem!!</button></div>
+      <div className='border-2 border-blue-400 rounded-md bg-white m-2 p-1 hover:bg-blue-600 hover:text-white' ><button type='submit' onClick={CreateItem}   > Create</button></div>
     
      </div>
-     <div className='inline-block' >
+     <div className='block' >
        {todo.map((item, index)=>{
-         return<ul> <li className='' key={item.id}>
-          {todoEditing === item.id ? (<input type='text' className='border-2 px-2 m-2 rounded-md ' onChange={(e)=>{setEditingText(e.target.value)}}/>):(<div className='border-2 px-2 m-2 rounded-md'>{item.name} :</div>)}
-          {todoEditing === item.id ? ( <button className='border-2 px-2 m-2 rounded-md' onClick={()=>editTodo(item.id)} >Submit Edit</button>):( <button className='border-2 px-2 m-2 border-slate-500 rounded hover:border-blue-500 bg-slate-500 hover:bg-blue-600' type='submit' onClick={()=>setTodoEditing(item.id)}   > Edit</button>)}
+         return <li className='' key={item.id}>
+          {todoEditing === item.id ? (<input type='text' className='btn' onChange={(e)=>{setEditingText(e.target.value)}}/>):(<div className='btn'>:{item.name}</div>)}
+          {todoEditing === item.id ? ( <button className='btn' onClick={()=>editTodo(item.id)} >Submit Edit</button>):( <button className='btn' type='submit' onClick={()=>setTodoEditing(item.id)}   > Edit</button>)}
              
-         <button className='border-2 px-2 m-2 border-slate-500 rounded hover:border-blue-500 bg-slate-500 hover:bg-blue-600' type='submit' onClick={()=>DeleteItem(item.id)}   > Delete</button>
+         <button className='btn' type='submit' onClick={()=>DeleteItem(item.id)}   > Delete</button>
         
         
-         </li> </ul>
+         </li> 
        })} 
       </div>
    </div>
